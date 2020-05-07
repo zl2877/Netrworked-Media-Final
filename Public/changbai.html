@@ -1,0 +1,239 @@
+<html>
+    <style type='text/css'>
+        .button {
+        background-color:#e7e7e7; color: black; /* Green */
+        border: none;
+        color: grey;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        }
+
+        
+        .subtitle {
+              position: relative;
+              font-size: 4.5rem;
+              color: #999999;
+              height: 45px;
+              line-height: 45px;
+              text-align: center;
+            }
+            .subtitle:before {
+              content: "";
+              position: absolute;
+              width: 20%;
+              height: 1px;
+              top: 50%;
+              background-color: #ffffff;
+              left: 2%;
+            }
+            .subtitle:after {
+              content: "";
+              position: absolute;
+              width: 20%;
+              height: 1px;
+              top: 50%;
+              background-color: #ffffff;
+              right: 2%;
+            }
+
+        .column {
+          float: left;
+          width: 25%;
+          padding: 5px;
+        }
+        
+        /* Clearfix (clear floats) */
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+
+        table {
+
+border-collapse: collapse;
+
+font-family: Futura, Arial, sans-serif;
+
+}
+
+caption {
+
+font-size: larger;
+
+margin: 1em auto;
+
+}
+
+th,td {
+
+padding: .65em;
+
+}
+
+th,td {
+
+border-bottom: 1px solid #ddd;
+
+border-top: 1px solid #ddd;
+
+text-align: center;
+
+}
+
+        
+    </style>
+<head> 
+    <title> ChangBai Mountains</title>
+   
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(
+
+    function(){
+
+
+        $.ajax({
+
+        url: "http://api.openweathermap.org/data/2.5/weather?units=imperial&id=7843636&appid=06fd29f537aa994867b0d9c3e37cebe7",
+        // Change YOURAPPID to your API key
+        dataType: 'json',
+        success: function(data) {
+            //console.log("Temperature is:" + data);
+
+            document.getElementById("temp").innerHTML = data.main.temp;
+            document.getElementById("weather").innerHTML = data.weather[0].main;
+            document.getElementById("humidity").innerHTML = data.main.humidity;
+
+
+            $('temp').html(data.main.temp);
+        },
+        error: function() {
+            alert("error");
+        }
+        });        
+    });
+
+    $(document).ready(
+
+function(){
+
+
+    $.ajax({
+
+    url: "http://api.openweathermap.org/data/2.5/forecast?id=7843636&appid=06fd29f537aa994867b0d9c3e37cebe7",
+    // Change YOURAPPID to your API key
+    dataType: 'json',
+    success: function(data) {
+        //console.log("Temperature is:" + data);
+
+        //document.getElementById("weatherforcast").innerHTML = data.list[4].main.description;
+        document.getElementById("weatherforcast2").innerHTML = data.list[5].weather[0].description;
+        document.getElementById("weatherforcast3").innerHTML = data.list[6].weather[0].description;
+        document.getElementById("weatherforcast4").innerHTML = data.list[7].weather[0].description;
+        document.getElementById("weatherforcast5").innerHTML = data.list[8].weather[0].description;
+
+
+
+       
+    },
+    error: function() {
+        alert("error");
+    }
+    });        
+});
+
+                   
+</script>
+</head>
+<body style="background-color:rgb(237, 246, 252);">
+    <font face = "Optima">
+        <br>
+    <center><span style='font-size:50px;'> <p style="color:rgb(91, 91, 91);" class="subtitle"> ChangBai Mountains </p>
+
+    <center><img src="changbai2.png" width="1158" height="452"> </center>
+
+
+
+<center>
+    <br>
+  
+  <table>
+    <tr>
+        <th>Location</th>
+        <td>Jilin Provience</td>
+      </tr>
+
+    <tr>
+      <th>Recommended Seasons</th>
+      <td>Summer and Fall</td>
+     
+    </tr>
+
+   
+    <tr>
+      <th>Things to Do</th>
+      <td>Tianchi (Heavenly Lake) &nbsp&nbsp Skiing</td>
+     
+
+    </tr>
+    </table>
+  
+  </center>
+  <br>
+<center>
+    <font color = "grey">
+    <p style="font-size:20px">
+        Located near the Korean border, spectacular Eternally White Mountain is China's largest nature reserve with rare sables, tigers and wild ginseng.</p>
+  <p style="font-size:20px">
+    Hot springs, waterfalls, Heavenly Lake, and the nature-reserve area are the top attractions in the mountains. </p>
+  <p style="font-size:20px">
+    Among them Heavenly Lake is the most gorgeous and a must-visit place. While trekking around Heavenly Lake, you may be surprised and  </p>
+  <p style="font-size:20px">
+    overwhelmed by the scenery, which is different, but equally spectacular, under different weather conditions.
+</p>
+</font>
+</center>
+<br>
+<div>
+
+      
+    <p style="font-size:20px"><font color = "grey">Weather for location 
+    </font></p>
+    <p style="font-size:25px" id="weather" ></p>
+    <p style="font-size:20px"><font color = "grey">
+        Temperature in fahrenheit 
+        </font></p>
+    <p style="font-size:25px" id="temp"></p>
+    <p style="font-size:20px"><font color = "grey">
+        Humidity </font></p>
+    <p style="font-size:25px" id="humidity"></p>
+    <p style="font-size:20px"><font color = "grey">
+      Forecast for the next few days </font>
+ 
+  <p style="font-size:25px" id="weatherforcast"></p>
+  <p style="font-size:25px" id="weatherforcast2"></p>
+  <p style="font-size:25px" id="weatherforcast3"></p>
+  <p style="font-size:25px" id="weatherforcast4"></p>
+  <p style="font-size:25px" id="weatherforcast5"></p>
+</p>
+
+</div>
+
+  <br>
+
+    <a href="main.html"><div class="button">Back to front page</div></a>
+</font>
+
+
+</body>
+
+
+
+
+</html>
+
